@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 export default function Navbar() {
   const pathname = usePathname();
 
+  // Helper function to check if the route is active
   const isActive = (path) => pathname === path;
 
   return (
@@ -158,6 +159,7 @@ export default function Navbar() {
 
       {/* ─── NAVBAR END: THEME TOGGLE, LOGIN & USER ───────────── */}
       <div className="navbar-end gap-3">
+        {/* Theme Picker Dropdown */}
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
@@ -238,6 +240,7 @@ export default function Navbar() {
           </ul>
         </div>
 
+        {/* Login */}
         <Link
           href="/login"
           className={`btn btn-sm rounded-xl px-4 text-sm font-semibold transition-colors ${
@@ -247,6 +250,7 @@ export default function Navbar() {
           Login
         </Link>
 
+        {/* User Profile Menu */}
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
