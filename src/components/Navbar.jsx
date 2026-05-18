@@ -1,13 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [currentTheme, setCurrentTheme] = useState("");
 
-  // Helper function to check if the route is active
+  useEffect(() => {
+    const activeTheme =
+      document.documentElement.getAttribute("data-theme") || "valentine";
+    setCurrentTheme(activeTheme);
+  }, []);
+
+  const handleThemeChange = (newTheme) => {
+    setCurrentTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
+  };
+
   const isActive = (path) => pathname === path;
 
   return (
@@ -42,11 +54,7 @@ export default function Navbar() {
             <li>
               <Link
                 href={"/"}
-                className={`font-medium ${
-                  isActive("/")
-                    ? "bg-orange-500 text-white hover:bg-orange-600"
-                    : "hover:bg-base-200"
-                }`}
+                className={`font-medium ${isActive("/") ? "bg-orange-500 text-white hover:bg-orange-600" : "hover:bg-base-200"}`}
               >
                 Home
               </Link>
@@ -109,11 +117,7 @@ export default function Navbar() {
           <li>
             <Link
               href={"/"}
-              className={`rounded-xl px-4 py-2 transition-colors ${
-                isActive("/")
-                  ? "bg-orange-500 text-white hover:bg-orange-600"
-                  : "hover:bg-base-200"
-              }`}
+              className={`rounded-xl px-4 py-2 transition-colors ${isActive("/") ? "bg-orange-500 text-white hover:bg-orange-600" : "hover:bg-base-200"}`}
             >
               Home
             </Link>
@@ -121,11 +125,7 @@ export default function Navbar() {
           <li>
             <Link
               href={"/pets"}
-              className={`rounded-xl px-4 py-2 transition-colors ${
-                isActive("/pets")
-                  ? "bg-orange-500 text-white hover:bg-orange-600"
-                  : "hover:bg-base-200"
-              }`}
+              className={`rounded-xl px-4 py-2 transition-colors ${isActive("/pets") ? "bg-orange-500 text-white hover:bg-orange-600" : "hover:bg-base-200"}`}
             >
               All Pets
             </Link>
@@ -133,11 +133,7 @@ export default function Navbar() {
           <li>
             <Link
               href={"/requests"}
-              className={`rounded-xl px-4 py-2 transition-colors ${
-                isActive("/requests")
-                  ? "bg-orange-500 text-white hover:bg-orange-600"
-                  : "hover:bg-base-200"
-              }`}
+              className={`rounded-xl px-4 py-2 transition-colors ${isActive("/requests") ? "bg-orange-500 text-white hover:bg-orange-600" : "hover:bg-base-200"}`}
             >
               My Requests
             </Link>
@@ -145,11 +141,7 @@ export default function Navbar() {
           <li>
             <Link
               href={"/add-pet"}
-              className={`rounded-xl px-4 py-2 transition-colors ${
-                isActive("/add-pet")
-                  ? "bg-orange-500 text-white hover:bg-orange-600"
-                  : "hover:bg-base-200"
-              }`}
+              className={`rounded-xl px-4 py-2 transition-colors ${isActive("/add-pet") ? "bg-orange-500 text-white hover:bg-orange-600" : "hover:bg-base-200"}`}
             >
               Add Pet
             </Link>
@@ -208,6 +200,8 @@ export default function Navbar() {
                 className="theme-controller btn btn-sm btn-ghost justify-start font-medium text-sm rounded-xl"
                 aria-label="☀️ Light"
                 value="light"
+                checked={currentTheme === "light"}
+                onChange={() => handleThemeChange("light")}
               />
             </li>
             <li>
@@ -217,6 +211,8 @@ export default function Navbar() {
                 className="theme-controller btn btn-sm btn-ghost justify-start font-medium text-sm rounded-xl"
                 aria-label="🌙 Dark"
                 value="dark"
+                checked={currentTheme === "dark"}
+                onChange={() => handleThemeChange("dark")}
               />
             </li>
             <li>
@@ -226,6 +222,8 @@ export default function Navbar() {
                 className="theme-controller btn btn-sm btn-ghost justify-start font-medium text-sm rounded-xl"
                 aria-label="🤖 Cyberpunk"
                 value="cyberpunk"
+                checked={currentTheme === "cyberpunk"}
+                onChange={() => handleThemeChange("cyberpunk")}
               />
             </li>
             <li>
@@ -235,6 +233,8 @@ export default function Navbar() {
                 className="theme-controller btn btn-sm btn-ghost justify-start font-medium text-sm rounded-xl"
                 aria-label="💕 Valentine"
                 value="valentine"
+                checked={currentTheme === "valentine"}
+                onChange={() => handleThemeChange("valentine")}
               />
             </li>
           </ul>
@@ -243,9 +243,7 @@ export default function Navbar() {
         {/* Login */}
         <Link
           href="/login"
-          className={`btn btn-sm rounded-xl px-4 text-sm font-semibold transition-colors ${
-            isActive("/login") ? "btn-neutral" : "btn-ghost hover:bg-base-200"
-          }`}
+          className={`btn btn-sm rounded-xl px-4 text-sm font-semibold transition-colors ${isActive("/login") ? "btn-neutral" : "btn-ghost hover:bg-base-200"}`}
         >
           Login
         </Link>
@@ -255,11 +253,7 @@ export default function Navbar() {
           <div
             tabIndex={0}
             role="button"
-            className={`btn btn-ghost btn-circle avatar ring-offset-base-100 ring-offset-2 ${
-              isActive("/dashboard")
-                ? "ring-4 ring-orange-600"
-                : "ring-2 ring-orange-500"
-            }`}
+            className={`btn btn-ghost btn-circle avatar ring-offset-base-100 ring-offset-2 ${isActive("/dashboard") ? "ring-4 ring-orange-600" : "ring-2 ring-orange-500"}`}
           >
             <div className="w-10 rounded-full bg-orange-100 flex items-center justify-center">
               <span className="text-lg">👨</span>
@@ -267,7 +261,7 @@ export default function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-xl bg-base-100 rounded-2xl w-48 border border-base-200 gap-1"
+            className="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow-xl bg-base-100 rounded-2xl w-48 border border-base-200 gap-1"
           >
             <li>
               <Link

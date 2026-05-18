@@ -1,4 +1,4 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: dark, light, cyberpunk, valentine;
+  themes: light, dark, cyberpunk, valentine;
 }
