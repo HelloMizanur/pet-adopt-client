@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { min-height: 100%; }
+body { font-family: var(--font-sans), system-ui, sans-serif; }
+
+.gradient-text {
+  background: linear-gradient(90deg, hsl(var(--heroui-primary)), hsl(var(--heroui-secondary)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-bg {
+  background:
+    radial-gradient(800px 400px at 10% 10%, hsl(var(--heroui-primary) / 0.25), transparent 60%),
+    radial-gradient(700px 400px at 90% 30%, hsl(var(--heroui-secondary) / 0.2), transparent 60%);
+}
