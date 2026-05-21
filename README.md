@@ -12,8 +12,8 @@ PawHaven connects prospective pet adopters with shelters and individual owners. 
 
 ## 🔗 Live Deployment & Links
 
-- **Live Application URL:** `[Insert your live Vercel / Render deployment link here]`
-- **Backend API Repository:** `[Insert your GitHub Server repository link here]`
+- **Live Application URL:** `https://petclient.vercel.app/`
+
 
 ---
 
