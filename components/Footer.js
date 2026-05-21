@@ -1,12 +1,5 @@
 import NextLink from "next/link";
-import {
-  PawPrint,
-  Mail,
-  Phone,
-  Github,
-  Twitter,
-  Instagram,
-} from "lucide-react";
+import { PawPrint, Mail, Phone, Github, Twitter, Instagram } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -24,49 +17,24 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-3">Explore</h4>
           <ul className="space-y-2 text-sm">
-            <li>
-              <NextLink href="/" className="hover:text-primary">
-                Home
-              </NextLink>
-            </li>
-            <li>
-              <NextLink href="/pets" className="hover:text-primary">
-                All Pets
-              </NextLink>
-            </li>
-            <li>
-              <NextLink
-                href="/dashboard/add-pet"
-                className="hover:text-primary"
-              >
-                List a Pet
-              </NextLink>
-            </li>
+            <li><NextLink href="/" className="hover:text-primary">Home</NextLink></li>
+            <li><NextLink href="/pets" className="hover:text-primary">All Pets</NextLink></li>
+            <li><NextLink href="/dashboard/add-pet" className="hover:text-primary">List a Pet</NextLink></li>
           </ul>
         </div>
         <div>
           <h4 className="font-semibold mb-3">Contact</h4>
           <ul className="space-y-2 text-sm">
-            <li className="flex items-center gap-2">
-              <Mail size={14} /> mizanur@pawhaven.app
-            </li>
-            <li className="flex items-center gap-2">
-              <Phone size={14} /> +880 010-0123
-            </li>
+            <li className="flex items-center gap-2"><Mail size={14}/> hello@pawhaven.app</li>
+            <li className="flex items-center gap-2"><Phone size={14}/> +1 (555) 010-0123</li>
           </ul>
         </div>
         <div>
           <h4 className="font-semibold mb-3">Follow</h4>
           <div className="flex gap-3">
-            <a href="#" aria-label="GitHub" className="hover:text-primary">
-              <Github size={18} />
-            </a>
-            <a href="#" aria-label="Twitter" className="hover:text-primary">
-              <Twitter size={18} />
-            </a>
-            <a href="#" aria-label="Instagram" className="hover:text-primary">
-              <Instagram size={18} />
-            </a>
+            <a href="#" aria-label="GitHub" className="hover:text-primary"><Github size={18}/></a>
+            <a href="#" aria-label="Twitter" className="hover:text-primary"><Twitter size={18}/></a>
+            <a href="#" aria-label="Instagram" className="hover:text-primary"><Instagram size={18}/></a>
           </div>
         </div>
       </div>
